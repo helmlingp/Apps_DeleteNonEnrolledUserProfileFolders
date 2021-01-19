@@ -39,15 +39,15 @@ $profiles = Get-ChildItem -Path "C:\Users"
 foreach ($p in $profiles){ 
     if($p.FullName -eq $enrolledprofile -or $p.Name -eq "Public") {
         # Do nothing to the C:\Users\Public folder and the enrolled user profile folder
-        write-host "$p enrollment or public profile that won't be deleted"
+        #write-host "$p enrollment or public profile that won't be deleted"
     } else {
         $lastaccess = $p.LastAccessTime
         $lastmonth = (Get-Date).addmonths($months)
         if($lastaccess -le $lastmonth){
-            write-host "$p profile that can be deleted"
-            #Remove-Item -Path $p -Recurse -Force
+            #write-host "$p profile that can be deleted"
+            Remove-Item -Path $p -Recurse -Force
         } else {
-            write-host "$p profile that won't be deleted"
+            #write-host "$p profile that won't be deleted"
         }
     }
 }
