@@ -6,14 +6,13 @@
 	Created by:	    Phil Helmling, @philhelmling
 	Organization:   VMware, Inc.
     Filename:       Delete_NonEnrolled_UserProfileFolders.ps1
-    GitHub:         https://github.com/helmlingp/
+    GitHub:         https://github.com/helmlingp/Apps_DeleteNonEnrolledUserProfileFolders 
   .DESCRIPTION
     Script to delete user profile folders not accessed for more than 1 month
     Does NOT delete user profile folder of enrolled user as this breaks enrollment
     
   .EXAMPLE
     powershell.exe -ep bypass -file .\Delete_NonEnrolled_UserProfileFolders.ps1
-
 #>
 #Variables
 $months = -1
