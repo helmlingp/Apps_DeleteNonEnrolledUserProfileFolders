@@ -23,13 +23,13 @@ $enrolid = (Get-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Provisioning\OMADM\A
 foreach ($row in $enrolid) {
     $PATH2 = "HKLM:\SOFTWARE\Microsoft\Enrollments\$row"
     $upn = (Get-ItemProperty -Path $PATH2 -ErrorAction SilentlyContinue).UPN
+    $SID = (Get-ItemProperty -Path $PATH2 -ErrorAction SilentlyContinue).SID
 }
  
 #Getting SID/SAMName from UPN
 $AdObj = New-Object System.Security.Principal.NTAccount($upn)
 $strSID = $AdObj.Translate([System.Security.Principal.SecurityIdentifier])
 $strSID.Value
- 
 $profiledonotdelete = gwmi win32_userprofile | where-object sid -eq $strSID.Value
 $profiledonotdelete.LocalPath
 
@@ -37,7 +37,7 @@ $profiledonotdelete.LocalPath
 #should also only keep latest 10 profiles
 $profiles = Get-ChildItem -Path "C:\Users"
 foreach ($p in $profiles){ 
-    if($p.FullName -eq $enrolledprofile -or $p.Name -eq "Public") {
+    if($p.FullName -eq $profiledonotdelete -or $p.Name -eq "Public") {
         # Do nothing to the C:\Users\Public folder and the enrolled user profile folder
         #write-host "$p enrollment or public profile that won't be deleted"
     } else {
