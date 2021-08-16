@@ -2,9 +2,9 @@
   .Synopsis
     Script to delete user profile folders not accessed for more than 1 month
   .NOTES
-	Created:   	    January, 2021
-	Created by:	    Phil Helmling, @philhelmling
-	Organization:   VMware, Inc.
+    Created:   	    January, 2021
+    Created by:	    Phil Helmling, @philhelmling
+    Organization:   VMware, Inc.
     Filename:       Delete_NonEnrolled_UserProfileFolders.ps1
     GitHub:         https://github.com/helmlingp/Apps_DeleteNonEnrolledUserProfileFolders 
   .DESCRIPTION
