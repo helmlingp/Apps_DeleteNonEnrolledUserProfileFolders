@@ -23,7 +23,7 @@ $enrolid = (Get-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Provisioning\OMADM\A
 foreach ($row in $enrolid) {
     $PATH2 = "HKLM:\SOFTWARE\Microsoft\Enrollments\$row"
     $upn = (Get-ItemProperty -Path $PATH2 -ErrorAction SilentlyContinue).UPN
-    $SID = (Get-ItemProperty -Path $PATH2 -ErrorAction SilentlyContinue).SID
+    #$SID = (Get-ItemProperty -Path $PATH2 -ErrorAction SilentlyContinue).SID
 }
  
 #Getting SID/SAMName from UPN
